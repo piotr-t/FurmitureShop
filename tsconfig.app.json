@@ -3,7 +3,12 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "types": []
+    "types": [
+      "lodash"
+    ]
+  },
+  "angularCompilerOptions": {
+    "enableIvy": false
   },
   "files": [
     "src/main.ts",
