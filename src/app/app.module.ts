@@ -8,6 +8,13 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
+import { RouterModule } from '@angular/router';
+import { ShopModule } from './shop/shop.module';
+import { ShopRoutingModule } from './shop/shop-routing.module';
+import {MatCardModule} from '@angular/material/card';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -16,13 +23,22 @@ import { HomeComponent } from './home/home.component';
     HomeComponent
   ],
   imports: [
+    MatCardModule,
+    MatCheckboxModule,
+    ShopRoutingModule,
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,
-    PaginationModule.forRoot()
+    PaginationModule.forRoot(),
+    ButtonsModule
   ],
   exports: [
-    PaginationModule
+    PaginationModule,
+    AppRoutingModule,
+    FooterComponent,
+    MatCardModule,
+    MatCheckboxModule,
+    MatChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

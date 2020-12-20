@@ -1,0 +1,48 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Wyszukaj</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <button type="button" class="btn btn-primary" (click)="setAllert()" >
+            Toggle product Component
+          </button>
+        </div>
+        <div class="col-12 iin">
+          <input #inp type="text" (keyup) = "togEvent(inp)">
+          <section class="row"  [formGroup]="formGro">
+            <section *ngFor="let fs of firstSelect">
+              <section>
+            <mat-checkbox
+              (change) = "showCheck()"
+              formControlName={{fs}}
+
+              class="example-margin col-12">
+              {{fs}}
+            </mat-checkbox>
+          </section>
+            <section *ngIf="expression(fs)">
+              <mat-checkbox>Nowy</mat-checkbox>
+            </section>
+          </section>
+
+          </section>
+          <section [formGroup]="formGro1">
+            <label for="inp1">Cena: </label>
+            <input type="text"
+             name="inp1"
+             formControlName="cena"
+             (keyup) = "showCheck()"
+             [value] = "valFromSelect"
+             [ngClass] = "{'wrInput':wrongInput}">
+          </section>
+
+
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+

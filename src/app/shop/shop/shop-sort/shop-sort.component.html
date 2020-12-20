@@ -1,0 +1,18 @@
+<mat-card>
+  <mat-card-content>
+    <div class="row">
+      <mat-chip-list>
+        <mat-chip *ngFor="let chip of chips" [removable]="true">
+          {{chip}}
+          <mat-icon matChipRemove (click)="remove(chip)">cancel</mat-icon>
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+    <div class="row">
+      <div class="col-3">a</div>
+      <div class="col-3">b</div>
+      <div class="col-3">c</div>
+      <div class="col-3">d</div>
+    </div>
+  </mat-card-content>
+</mat-card>

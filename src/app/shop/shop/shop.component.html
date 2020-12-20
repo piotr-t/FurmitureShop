@@ -1,0 +1,26 @@
+<div class="container-fluid containerr">
+  <div class="row containerr__row">
+    <div class="col-12">
+      <app-shop-header></app-shop-header>
+    </div>
+    <div class="col-12">
+      <div class="row">
+        <div class="col-3">
+          <app-shop-aside (Prop)="toogleProductComponent($event)"  (Prop1)="fromAsideCheck1 =$event"></app-shop-aside>
+        </div>
+        <div class="col-9">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+    <div class="nCheck" *ngFor="let item of fromAsideCheck1">
+      {{item}}
+    </div>
+    <div class="col-12 align-self-end">
+      <app-footer></app-footer>
+    </div>
+  </div>
+</div>
+
+
+
