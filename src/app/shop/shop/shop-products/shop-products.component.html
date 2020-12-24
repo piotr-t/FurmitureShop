@@ -1,1 +1,19 @@
 <app-shop-sort></app-shop-sort>
+<div class="container-fluid">
+  <div class="row csr">
+    <div class="col-12 prod" *ngFor = "let prod of products; index as i">
+<mat-card>
+  <div class="row  align-items-center">
+  <div class="col-1">{{i+1}}</div>
+  <div class="col-4">
+    <img src={{prod.link}} alt="">
+  </div>
+  <div class="col-3">{{prod.name}}</div>
+  <div class="col-3">{{prod.cena}}</div>
+  <div class="col-1">sztuk</div>
+
+</div>
+</mat-card>
+    </div>
+  </div>
+</div>

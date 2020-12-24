@@ -13,7 +13,8 @@ export class ShopSortComponent implements OnInit {
   chips = [];
   valOfCheck;
 
-  constructor(private shopService: ShopService) { }
+  constructor(private shopService: ShopService) {
+   }
 
 
 
@@ -27,7 +28,7 @@ export class ShopSortComponent implements OnInit {
       this.valOfCheck = val;
     });
     this.shopService.getPrice().subscribe(vp => {
-      if (vp.cena && vp.cena !== '') {this.chips.push('cena:' + vp.cena) };
+      if (vp.cena && vp.cena !== '') {this.chips.push('cena:      ' + vp.cena) };
     });
   }
 

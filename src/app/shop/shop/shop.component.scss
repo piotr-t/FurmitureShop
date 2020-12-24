@@ -1,8 +1,12 @@
 .containerr{
+  position: absolute;
+  overflow: auto;
   height: 100%;
   min-height: 100%;
+  max-height: 100%;
   background-color: aquamarine;
   .containerr__row{
+    overflow: auto;
     height: 100%;
     background-color: rgb(67, 25, 165);
   }

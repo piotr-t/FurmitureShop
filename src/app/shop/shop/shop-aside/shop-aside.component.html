@@ -5,44 +5,91 @@
   <mat-card-content>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-12">
-          <button type="button" class="btn btn-primary" (click)="setAllert()" >
-            Toggle product Component
-          </button>
-        </div>
         <div class="col-12 iin">
-          <input #inp type="text" (keyup) = "togEvent(inp)">
-          <section class="row"  [formGroup]="formGro">
-            <section *ngFor="let fs of firstSelect">
-              <section>
-            <mat-checkbox
-              (change) = "showCheck()"
-              formControlName={{fs}}
-
-              class="example-margin col-12">
-              {{fs}}
-            </mat-checkbox>
-          </section>
-            <section *ngIf="expression(fs)">
-              <mat-checkbox>Nowy</mat-checkbox>
-            </section>
-          </section>
-
-          </section>
-          <section [formGroup]="formGro1">
-            <label for="inp1">Cena: </label>
-            <input type="text"
-             name="inp1"
-             formControlName="cena"
-             (keyup) = "showCheck()"
-             [value] = "valFromSelect"
-             [ngClass] = "{'wrInput':wrongInput}">
-          </section>
-
-
+          <input #inp type="text">
+          <ng-container *ngTemplateOutlet="lista"></ng-container>
+          <ng-container *ngTemplateOutlet="cena"></ng-container>
+          <ng-container *ngTemplateOutlet="lokalizacja"></ng-container>
         </div>
       </div>
     </div>
   </mat-card-content>
 </mat-card>
+
+
+
+<!--================= lista =========================-->
+<ng-template #lista>
+  <section class="row"  [formGroup]="formGro">
+    <ng-container *ngFor="let fs of firstSelect">
+    <mat-checkbox
+      (change) = "showCheck($event)"
+      formControlName={{fs.firstSelection}}
+      class="example-margin col-12">
+      {{fs.firstSelection}}
+    </mat-checkbox>
+    <ng-container *ngTemplateOutlet="hollowList;context:{fs:fs}"></ng-container>
+  </ng-container>
+  </section>
+</ng-template>
+
+
+<!--================= zagłębiona lista =========================-->
+<ng-template #hollowList let-fs1="fs">
+  <section
+  *ngIf="expression(fs1)"
+  class="hollowCheck col-12">
+  <div class="row">
+    <mat-checkbox
+     *ngFor="let secondSel of fs1.secondSelection"
+     (change) = "showCheck($event)"
+     class="col-12">
+     {{secondSel}}
+    </mat-checkbox>
+  </div>
+  </section>
+</ng-template>
+
+
+<!--================= cena =========================-->
+<ng-template #cena>
+  <section [formGroup]="formGro1">
+    <mat-expansion-panel
+      (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Cena
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <label class="inp1" for="inp1">Cena min:</label>
+      <input type="text"
+       name="inp1"
+       formControlName="cena"
+       (keyup) = "showCheck($event)"
+       [value] = "valFromSelect"
+       [ngClass] = "{'wrInput':wrongInput}">
+       <label class="inp1" for="inp2">Cena max:</label>
+       <input type="text"
+       name="inp2">
+    </mat-expansion-panel>
+  </section>
+</ng-template>
+
+<!--================= lokalizacja =========================-->
+
+<ng-template #lokalizacja>
+  <section>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Lokalizacja
+        </mat-panel-title>
+        <p *ngFor="let wojewodztwo of wojewodztwa">{{wojewodztwo}}</p>
+      </mat-expansion-panel-header>
+
+    </mat-expansion-panel>
+
+  </section>
+</ng-template>
 

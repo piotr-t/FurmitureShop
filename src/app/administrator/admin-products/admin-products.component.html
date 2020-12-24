@@ -1,0 +1,55 @@
+
+
+<div class="row justify-content-center">
+
+<div class="col-12 tableContainer">
+<table class="mat-table mat-elevation-z8 table__container" mat-table [dataSource]="dataSource">
+
+
+  <ng-container
+   class="col-4"
+   *ngFor="let pos of displayedColumns; index as i"
+   [matColumnDef]=pos>
+    <th mat-header-cell
+    *matHeaderCellDef>
+      <h5 *ngIf="pos!=='edit'">{{pos}}</h5>
+    </th>
+
+    <ng-container *ngIf="pos!=='edit'">
+    <td mat-cell *matCellDef="let element">
+      <div class="row">
+        <div class="numberOfElement" *ngIf="pos==='name'">{{element.id}}</div>
+        <img class="elemImage" *ngIf="pos==='name'" [src]="(element.link&&pos==='name') ? element.link : './../../../assets/images.jpg'">
+        <div [ngClass]="{'productName': pos ==='name'}">{{element[pos]}}</div>
+      </div>
+
+    </td>
+  </ng-container>
+    <ng-container *ngIf="pos==='edit'" >
+    <td mat-cell *matCellDef="let element"><button (click)="editButton(element)">Edit</button></td>
+    </ng-container>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;">{{row}}</tr>
+</table>
+</div>
+</div>
+
+<div class="pagination row">
+<div
+    *ngFor="let item of paginationCount; let last = last; let first = first"
+    class="paginCol"
+    [ngClass]="{
+      'highlightItem': paginationNumber === item,
+      'firstItem': first,
+      'lastItem': last,
+    'allItems': true}"
+    (click)="setPageNumber(item)">
+
+{{item}}
+
+</div>
+</div>
+
+<button (click) = "sortProducts()">toogleSort</button>

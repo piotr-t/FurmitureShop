@@ -4,15 +4,19 @@
       <div class="row justify-content-end">
         <div class="col-6 homeContainer__navigation--nav ">
           <div class=" nav row">
-            <div class="nav__home col-4">Home</div>
-            <div class="nav__shop col-4" routerLink="/goToShop">Shop</div>
-            <div class="nav__Allegro col-4">Sklep na Allegro</div>
+            <div class="nav__all nav__home col-4">Home</div>
+            <div class="nav__all nav__shop col-4" routerLink="/goToShop">Shop</div>
+            <div class="nav__all nav__Allegro col-4" ><a href="https://allegro.pl" target="_blank" >Sklep na Allegro</a></div>
           </div>
         </div>
       </div>
     </div>
     <div class="col-12">
-      <div class="banner"><h1>Furniture Shop</h1></div>
+      <div class="banner"><h1 class="banner__slogan">Furniture Shop</h1>
+      </div>
+    </div>
+    <div class="col-12">
+      <app-news></app-news>
     </div>
     <div class="col-12">
       <div class="row">
@@ -22,7 +26,7 @@
       </div>
     </div>
     <div class="col-12 align-self-end footer">
-      <app-footer ></app-footer>
+      <app-footer></app-footer>
     </div>
   </div>
 </div>

@@ -1,0 +1,17 @@
+.adminHeader{
+  border: 2px double rgb(161, 19, 19);
+  border-radius: 2px;
+  margin: 2px;
+  .nav{
+    padding: 3px;
+    justify-content: center;
+    background-color: rgb(241, 238, 233);
+    cursor: pointer;
+    .adminHeader__text--align{
+      color: brown;
+    }
+  }
+}
+
+
+

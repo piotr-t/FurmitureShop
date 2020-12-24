@@ -1,3 +1,4 @@
+import { AdministratorModule } from './administrator/administrator.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -15,12 +16,17 @@ import {MatCardModule} from '@angular/material/card';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatChipsModule} from '@angular/material/chips';
+import { NewsComponent } from './news/news.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    NewsComponent
   ],
   imports: [
     MatCardModule,
@@ -30,15 +36,24 @@ import {MatChipsModule} from '@angular/material/chips';
     AppRoutingModule,
     NoopAnimationsModule,
     PaginationModule.forRoot(),
-    ButtonsModule
+    ButtonsModule,
+    /**
+     * ### Modules childes
+     */
+    AdministratorModule
   ],
   exports: [
+
     PaginationModule,
     AppRoutingModule,
     FooterComponent,
     MatCardModule,
     MatCheckboxModule,
-    MatChipsModule
+    MatChipsModule,
+    NewsComponent,
+    MatExpansionModule,
+    HttpClientModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,8 +1,10 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators  } from '@angular/forms';
 import * as _ from 'lodash';
 import { ShopService } from '../../shop.service';
+import {firstList} from './../../shop-config';
 
 @Component({
   selector: 'app-shop-aside',
@@ -11,50 +13,63 @@ import { ShopService } from '../../shop.service';
 })
 export class ShopAsideComponent implements OnInit {
 
-  @Output()
-  Prop = new EventEmitter();
-
-  @Output()
-  Prop1 = new EventEmitter();
-
-  toggleProductComponent = true;
+/**
+ *  toggleProductComponent
+ */
+  toggleProductComponent;
   serchVal;
   checked;
   formObject = {};
   valFromSelect = '';
   wrongInput = false;
+  panelOpenState = false;
 
-  firstSelect = ['kuchnia', 'salon', 'łazienka', 'sypialnia'];
+  firstSelect = firstList;
+
+    secondSelect = [];
+    wojewodztwa = [];
 
   formGro;
   formGro1 =  new FormGroup({
-    cena: new FormControl('', Validators.pattern('^[0-9]*\.?[0-9]+\,?[0-9]*')) // https://kursjs.pl/kurs/regular/regular.php
+    cena: new FormControl('', Validators.pattern('^[0-9]*\.?[0-9]+\,?[0-9]*')), // https://kursjs.pl/kurs/regular/regular.php
+    cenaMin: new FormControl('', Validators.pattern('^[0-9]*\.?[0-9]+\,?[0-9]*')),
+    cenaMax: new FormControl('', Validators.pattern('^[0-9]*\.?[0-9]+\,?[0-9]*')),
   });
 
 
-  constructor(private shopService: ShopService) { }
+  constructor(private shopService: ShopService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.firstSelect.map(mapVal => {this.formObject[mapVal] = new FormControl(false); });
+    this.getsValueFromService();
+  }
+
+  getsValueFromService(): void {
+    this.firstSelect.map(mapVal => {this.formObject[mapVal.firstSelection] = new FormControl(false); });
     this.formGro = new FormGroup(this.formObject);
     this.shopService.getCheck1Value().subscribe(val => {
+      this.check2();
       _.forEach(val, (v, k) => {this.formObject[k] = new FormControl(v); });
       this.formGro = new FormGroup(this.formObject);
     });
+
     this.shopService.getPrice().subscribe(vp1 => {
       vp1.cena ? this.valFromSelect = vp1.cena : this.valFromSelect = ''; });
   }
 
-  setAllert(): void {
-    this.toggleProductComponent = !this.toggleProductComponent;
-    this.Prop.emit(this.toggleProductComponent);
+  check2(): void{
+    if (this.formGro1.value.cena !== '' || _.includes(this.formGro.value, true)) {
+      this.router.navigate(['./products'], { relativeTo: this.route });
+      setTimeout(() => {
+        this.shopService.addValFromAside(this.formGro.value);
+        this.shopService.setPriceFromAside(this.formGro1.value);
+      }, 10);
+    }else{
+      this.router.navigate(['./'], { relativeTo: this.route });
+    }
   }
 
-  togEvent(ev): void{
-    ev.value === '' ? this.Prop.emit(true) : this.Prop.emit(false);
-  }
-
-  showCheck(): void{
+  showCheck(e): void{
+this.check2();
 this.shopService.addValFromAside(this.formGro.value);
 if (this.formGro1.status === 'VALID') {
   this.shopService.setPriceFromAside(this.formGro1.value);
@@ -64,10 +79,17 @@ if (this.formGro1.status === 'VALID') {
 
 
   }
-
+/**
+ * Description decyduje o wuświetlaniu warunkowym zagłębionej listy
+ * line 40  shop-aside.component.html
+ * @method expression
+ * @param fs using fs1
+ * @return boolean Description this.formGro.value[fs.firstSelection];
+ *  @tutorial tutorial-1
+ *  @link https://github.com GitHub
+ */
   expression(fs): boolean{
-    console.log(this.formGro.value[fs]);
-    return this.formGro.value[fs];
+    return this.formGro.value[fs.firstSelection];
   }
 
 }

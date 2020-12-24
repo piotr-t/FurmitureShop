@@ -1,0 +1,19 @@
+[
+  {"name": "szafka", "category":"kuchnia", "news":true, "cena":"0,00", "link":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0Ar9kH7eLsPYuITjVHGTa8DiQGuwOj0IETA&usqp=CAU"},
+  {"name": "blat", "category":"kuchnia", "news":true, "cena":"0,00"},
+  {"name": "blat1", "category":"kuchnia", "news":true, "cena":"0,01"},
+  {"name": "szafka", "category":"sypialnia", "news":true, "cena":"0,01"},
+  {"name": "blat1", "category":"łazienka", "news":true, "cena":"0,01"},
+  {"name": "komoda", "category":"sypialnia", "news":true, "cena":"0,01"},
+  {"name": "blat1", "category":"łazienka", "news":true, "cena":"0,01"},
+  {"name": "blat1", "category":"łazienka", "news":true, "cena":"0,01"},
+  {"name": "blat1", "category":"łazienka", "news":true, "cena":"0,01"},
+  {"name": "blat1", "category":"łazienka", "news":true, "cena":"0,01"},
+  {"name": "blat1", "category":"łazienka", "news":true, "cena":"0,01"},
+  {"name": "blat1", "category":"łazienka", "news":true, "cena":"0,01"},
+  {"name": "blat1", "category":"łazienka", "news":true, "cena":"0,01"},
+  {"name": "blat1", "category":"łazienka", "news":true, "cena":"0,01"},
+  {"name": "blat1", "category":"łazienka", "news":true, "cena":"0,01"},
+  {"name": "blat1", "category":"łazienka", "news":true, "cena":"0,01"}
+
+]

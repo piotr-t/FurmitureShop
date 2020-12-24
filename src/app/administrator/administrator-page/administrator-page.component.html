@@ -1,0 +1,25 @@
+<div class="container-fluid adminContainer">
+    <app-admin-header></app-admin-header>
+    <router-outlet></router-outlet>
+</div>
+
+
+<button (click)="toogleAdmin()">toggleModal</button>
+
+<ng-template [ngIf] = "admin" [ngIfElse] ="modal" >
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col6"><h1>Udało się</h1></div>
+    <div class="col-3"></div>
+  </div>
+</ng-template>
+
+
+
+<ng-template #modal >
+<div class="row">
+  <div class="col-3"></div>
+  <div class="col-6"><h1>Nie udało się</h1></div>
+  <div class="col-3"></div>
+</div>
+</ng-template>
