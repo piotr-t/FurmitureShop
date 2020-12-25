@@ -32,4 +32,4 @@ allowJs - zezwala na prztwarzanie plików js
 
 ## about [tslint.json](https://riptutorial.com/pl/typescript/example/24656/podstawowa-konfiguracja-tslint-json)
 
-![hjh](furnitureShop/mineDescriptions/Screenshot(11).png)
+![hjh](/mineDescriptions/Screenshot(11).png)
