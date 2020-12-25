@@ -26,8 +26,10 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
-## about [tsconfig.ts] (https://solutionchaser.com/typescript-pierwsze-kroki-konfiguracja/)
+## about [tsconfig.ts] (https://solutionchaser.com/typescript-pierwsze-kroki-konfiguracja)
 noImplicitAny- wymuszanie deklarowania typu
 allowJs - zezwala na prztwarzanie plików js
 
 ## about [tslint.json](https://riptutorial.com/pl/typescript/example/24656/podstawowa-konfiguracja-tslint-json)
+
+![hjh](mineDescriptions\Screenshot(11).png|height=400|width=700)
