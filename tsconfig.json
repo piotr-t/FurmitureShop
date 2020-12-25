@@ -17,6 +17,7 @@
     /* mine*/
     "allowJs": true,
     "esModuleInterop": true,
+    "paths": {"@mineDescriptions": ["mineDescriptions/*"]},
 
     "target": "es2015",
     "module": "es2020",
